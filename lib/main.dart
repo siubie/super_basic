@@ -15,15 +15,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(
+        title: 'abc eeeee',
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
   final String title;
+  const MyHomePage({super.key, required this.title});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -31,6 +32,20 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
+// override init state
+  @override
+  void initState() {
+    super.initState();
+    print('Cek : masuk init state');
+    //change _counter value to 5 after 2 seconds
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        _counter = 5;
+        print('Cek : counter value changed to 5');
+      });
+    });
+  }
 
   void _incrementCounter() {
     setState(() {
