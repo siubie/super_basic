@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:super_basic/app_style.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppStyle().themeData,
       home: const MyHomePage(
         title: 'abc eeeee',
       ),
@@ -33,20 +31,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-// override init state
-  @override
-  void initState() {
-    super.initState();
-    print('Cek : masuk init state');
-    //change _counter value to 5 after 2 seconds
-    Future.delayed(const Duration(seconds: 2), () {
-      setState(() {
-        _counter = 5;
-        print('Cek : counter value changed to 5');
-      });
-    });
-  }
-
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -64,8 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
+            Text(
               'You have pushed the button this many times:',
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             Text(
               '$_counter',
